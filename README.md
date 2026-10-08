@@ -27,3 +27,5 @@ The contact form opens the visitor's email client; it does not submit to a backe
 - https://www.mdpi.com/2075-1680/10/2/121 (Mir Hameeda, Tangmarg; UNLP coauthors).
 - https://pubmed.ncbi.nlm.nih.gov/39282828/ (Artuso in Como; ORCID identity).
 - https://www.researchgate.net/profile/Dario-Zamora (ResearchGate profile).
+
+Profile icons: Simple Icons (CC0), https://github.com/simple-icons/simple-icons. CONICET logo: Consejo Nacional de Investigaciones Científicas y Técnicas, via https://commons.wikimedia.org/wiki/File:CONICET_logo_con_letras.svg, CC BY 2.5 AR https://creativecommons.org/licenses/by/2.5/ar/ (unchanged).
