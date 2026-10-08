@@ -1,28 +1,29 @@
-# D.J. Zamora — GitHub Pages site
+# D.J. Zamora — personal academic website
 
-This is a static academic website ready to be deployed on GitHub Pages.
+Published at https://dariojavierzamora.github.io/
 
-## How to publish
+Static HTML/CSS/JavaScript, GitHub Pages from main / root.
+Updated October 7, 2026 from the supplied academic CV.
 
-1. Create a GitHub repository.
-2. Upload all files in this folder to the repository root.
-3. Go to **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select **main** and **/root**.
-6. Save.
+## Editing
+- `research-data.js`: 28 publication entries and 23 coauthors. Statistics and shared-paper counts derive from this dataset.
+- `publications.html`: accessible, searchable complete publication list with DOI/arXiv links.
+- `cv.html`: academic timeline, education, teaching, mentoring and service. Print / Save as PDF uses the browser.
+- `main.js`: bilingual controls, filters, grouped-city collaboration map and canvas animation. Reduced-motion preferences are respected; motion can also be paused.
+- `styles.css`: responsive design, animation and print layout.
 
-If your repository is named `djzamora.github.io` and belongs to the `djzamora` user or organization, the site will be served from:
+## Data scope
+Publication types: 25 journal articles, 1 conference proceedings paper and 2 preprints (2016–2026). Unique coauthors exclude D.J. Zamora. No citation or h-index estimates are fabricated.
+Map coordinates are approximate institutional city centres, based on CV entries and publication affiliations; they are not personal addresses or assertions of current affiliation.
+The public CV is an academic summary. Personal birth data and phone numbers from the supplied PDF are not included.
+The contact form opens the visitor's email client; it does not submit to a backend.
 
-`https://djzamora.github.io`
-
-Otherwise it will be served from something like:
-
-`https://your-user.github.io/repository-name/`
-
-## Notes
-
-- The site is bilingual (EN/ES).
-- The collaboration map lives on `collaborations.html` and uses the data array defined in `assets/js/main.js`.
-- The current collaborator list is editable; you can change names, institutions and coordinates directly in the JS file.
-- The contact form uses `mailto:` because GitHub Pages does not provide a server-side backend.
-- If you later want to turn the site into a group webpage, most sections can be reused with only small content changes.
+## Affiliation and identity sources
+- CV supplied by D.J. Zamora: academic chronology and publication/coauthor list.
+- https://link.springer.com/article/10.1007/s11038-026-09580-8 (LIANM/INFINOA and IFISUR affiliations).
+- https://www.sciencedirect.com/science/article/pii/S1364682626001094 (HF propagation paper).
+- https://www.sciencedirect.com/science/article/abs/pii/S0038109817300996 (solid-state affiliations).
+- https://doi.org/10.1063/1.4975197 (M. Meyer in La Plata; UNT solid-state coauthors).
+- https://www.mdpi.com/2075-1680/10/2/121 (Mir Hameeda, Tangmarg; UNLP coauthors).
+- https://pubmed.ncbi.nlm.nih.gov/39282828/ (Artuso in Como; ORCID identity).
+- https://www.researchgate.net/profile/Dario-Zamora (ResearchGate profile).
