@@ -90,10 +90,37 @@
     }
     function tick(ts){raf=0;if(paused||!visible||document.hidden)return;if(ts-last>32){time+=Math.min((ts-last)/1000,.07);last=ts;draw()}raf=requestAnimationFrame(tick);}
     function resume(){cancelAnimationFrame(raf);raf=0;if(!paused&&visible&&!document.hidden){last=performance.now();raf=requestAnimationFrame(tick)}}
-    function label(){toggle.innerHTML=paused?tr('Resume motion','Activar movimiento'):tr('Pause motion','Pausar movimiento');toggle.setAttribute('aria-pressed',String(paused));hero.classList.toggle('motion-paused',paused)}
-    toggle.addEventListener('click',()=>{paused=!paused;label();resume()});reduce.addEventListener('change',e=>{paused=e.matches;label();resume()});document.addEventListener('languagechange',label);document.addEventListener('visibilitychange',resume);
+    function label(){hero.classList.toggle('motion-paused',paused);if(!toggle)return;toggle.innerHTML=paused?tr('Resume motion','Activar movimiento'):tr('Pause motion','Pausar movimiento');toggle.setAttribute('aria-pressed',String(paused));hero.classList.toggle('motion-paused',paused)}
+    toggle?.addEventListener('click',()=>{paused=!paused;label();resume()});reduce.addEventListener('change',e=>{paused=e.matches;label();resume()});document.addEventListener('languagechange',label);document.addEventListener('visibilitychange',resume);
     new IntersectionObserver(es=>{visible=es[0].isIntersecting;hero.classList.toggle('motion-paused',paused||!visible);resume()}).observe(hero);
     new ResizeObserver(resize).observe(hero);resize();label();resume();
+  }
+
+  const logoCanvas=document.getElementById('logo-vortex');
+  if(logoCanvas){
+    const core=logoCanvas.parentElement,ctx=logoCanvas.getContext('2d'),reduce=matchMedia('(prefers-reduced-motion: reduce)');
+    const dots=[[0.48657, 0.64455, 0.04977], [0.64013, 0.67923, 0.03769], [0.47303, 0.46012, 0.03364], [0.37361, 0.64946, 0.05368], [0.79354, 0.32336, 0.01354], [0.59568, 0.5028, 0.03626], [0.73549, 0.62166, 0.0327], [0.47861, 0.29664, 0.03707], [0.25276, 0.6556, 0.05808], [0.20122, 0.5415, 0.05976], [0.43233, 0.5523, 0.04918], [0.59619, 0.15793, 0.01923], [0.31839, 0.55268, 0.04934], [0.3558, 0.46072, 0.04142], [0.51058, 0.81872, 0.0272], [0.24603, 0.42237, 0.05488], [0.29838, 0.32665, 0.02924], [0.40154, 0.36897, 0.04625], [0.76719, 0.69911, 0.01319], [0.67456, 0.55372, 0.0341], [0.71391, 0.35035, 0.02876], [0.79127, 0.51222, 0.01028], [0.57536, 0.3331, 0.0201], [0.32051, 0.75707, 0.05759], [0.43988, 0.74743, 0.05275], [0.58723, 0.76305, 0.03875], [0.46471, 0.19341, 0.02549], [0.37581, 0.24772, 0.04047], [0.71018, 0.21308, 0.01475], [0.56222, 0.24189, 0.02848], [0.65259, 0.27608, 0.01947], [0.68923, 0.75696, 0.01807], [0.77559, 0.41741, 0.01866], [0.82969, 0.60938, 0.01319], [0.84987, 0.46429, 0.01234]];
+    let size=0,start=performance.now(),raf=0,visible=true;
+    function paint(now){
+      const phase=((now-start)/1000)%13;
+      const progress=reduce.matches?1:Math.min(1,phase/4.8);
+      const blend=1-Math.pow(1-progress,3);
+      const dissolve=!reduce.matches&&phase>11?((phase-11)/2):0;
+      const settle=blend*(1-dissolve);
+      ctx.clearRect(0,0,size,size);
+      dots.forEach((d,i)=>{
+        const angle=i*2.39996+(1-progress)*Math.PI*6+phase*.12;
+        const radius=.12+.31*Math.sqrt((i+1)/dots.length);
+        const x=((.5+Math.cos(angle)*radius)*(1-settle)+d[0]*settle)*size;
+        const y=((.5+Math.sin(angle)*radius)*(1-settle)+d[1]*settle)*size;
+        ctx.fillStyle='#006568';ctx.beginPath();ctx.arc(x,y,d[2]*size*(.55+.45*settle),0,Math.PI*2);ctx.fill();
+      });
+    }
+    function tick(now){raf=0;paint(now);if(!reduce.matches&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
+    function resume(){cancelAnimationFrame(raf);raf=0;if(visible&&!document.hidden)tick(performance.now());}
+    new ResizeObserver(()=>{size=logoCanvas.clientWidth;const dpr=Math.min(devicePixelRatio||1,2);logoCanvas.width=size*dpr;logoCanvas.height=size*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);paint(performance.now());core.classList.add('vortex-ready');}).observe(core);
+    new IntersectionObserver(es=>{visible=es[0].isIntersecting;resume();}).observe(core);
+    reduce.addEventListener('change',resume);document.addEventListener('visibilitychange',resume);
   }
   updateLanguage();
 })();

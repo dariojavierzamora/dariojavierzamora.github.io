@@ -160,3 +160,5 @@ html[data-lang="es"] .lang-es{display:initial!important}
 @media print{body{background:white;color:#111}.site-header,.site-footer,.cv-actions,.profile-links,.skip-link{display:none}.reveal{opacity:1;transform:none}.section,.section-sm,.page-hero{padding:18px 0;background:none}.container{width:100%}.card{box-shadow:none;border:0;padding:12px 0}.grid-2{grid-template-columns:1fr}.timeline-item{break-inside:avoid;padding-bottom:20px}.cv-entry,.mentoring-list li{break-inside:avoid}h2,h3{break-after:avoid}.page-hero h1{font-size:28px}.mentoring-list{grid-template-columns:1fr}.stack-lg{gap:10px}}
 
 .animated-hero .display span{color:inherit}
+
+#logo-vortex{position:absolute;inset:20px;width:calc(100% - 40px);height:calc(100% - 40px);border-radius:50%}.vortex-ready img{visibility:hidden}
