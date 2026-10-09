@@ -127,10 +127,16 @@
   if(reel){
     const photos=Array.from(reel.querySelectorAll('.reel-photo'));let current=0;
     function showPhoto(step){current=(current+step+photos.length)%photos.length;photos.forEach((p,i)=>p.hidden=i!==current);document.getElementById('photo-count').textContent=`${current+1} / ${photos.length}`;}
-    document.getElementById('photo-prev').addEventListener('click',()=>showPhoto(-1));
-    document.getElementById('photo-next').addEventListener('click',()=>showPhoto(1));
+    let timer=0,inView=false,hovered=false;
+    function restart(){clearInterval(timer);timer=0;if(inView&&!hovered&&!reel.contains(document.activeElement)&&!document.hidden)timer=setInterval(()=>showPhoto(1),5000);}
+    function manual(step){showPhoto(step);restart();}
+    document.getElementById('photo-prev').addEventListener('click',()=>manual(-1));
+    document.getElementById('photo-next').addEventListener('click',()=>manual(1));
+    reel.addEventListener('mouseenter',()=>{hovered=true;restart();});reel.addEventListener('mouseleave',()=>{hovered=false;restart();});
+    reel.addEventListener('focusin',restart);reel.addEventListener('focusout',()=>setTimeout(restart,0));document.addEventListener('visibilitychange',restart);
+    new IntersectionObserver(es=>{inView=es[0].isIntersecting;restart();},{threshold:.2}).observe(reel);
     document.addEventListener('languagechange',()=>{reel.setAttribute('aria-label',tr('Photo gallery','Galería de fotos'));document.getElementById('photo-prev').setAttribute('aria-label',tr('Previous photo','Foto anterior'));document.getElementById('photo-next').setAttribute('aria-label',tr('Next photo','Foto siguiente'));});
-    let touchX=0;reel.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX},{passive:true});reel.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchX;if(Math.abs(dx)>50)showPhoto(dx<0?1:-1)},{passive:true});
+    let touchX=0;reel.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX;clearInterval(timer);},{passive:true});reel.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchX;if(Math.abs(dx)>50)manual(dx<0?1:-1);else restart();},{passive:true});
   }
   updateLanguage();
 })();
