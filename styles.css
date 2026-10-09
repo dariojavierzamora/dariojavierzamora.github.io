@@ -167,3 +167,5 @@ html[data-lang="es"] .lang-es{display:initial!important}
 
 .footer-grid{grid-template-columns:1fr 1fr;max-width:760px;margin:0 auto;gap:60px}.footer-col .profile-link{display:flex;align-items:center;gap:12px;min-height:30px}.profile-icon{width:24px;height:24px;object-fit:contain;flex:0 0 24px}.profile-link[href*="conicet"] .profile-icon{width:34px;flex-basis:34px;margin-left:-5px;margin-right:-5px}@media(max-width:600px){.footer-grid{gap:30px;grid-template-columns:1fr 1fr}}
 .animated-hero .hero-grid{align-items:start;row-gap:0}.animated-hero .hero-name{grid-column:1/-1;font-size:1.52rem;line-height:1.4;margin-bottom:20px}.animated-hero .hero-copy h1{margin-top:0}.animated-hero .hero-panel{align-self:start}@media(max-width:1024px){.animated-hero .hero-panel{margin-top:32px}}
+
+.cv-profile-links{display:flex;flex-wrap:wrap;gap:16px 26px}.cv-profile-links .profile-link{display:inline-flex;align-items:center;gap:9px}.cv-profile-links .profile-link[href*="conicet"] .profile-icon{width:34px;flex-basis:34px}
