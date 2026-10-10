@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs>
+<radialGradient id="ocean" cx="30%" cy="25%" r="85%"><stop stop-color="#4cc8ed"/><stop offset=".5" stop-color="#087ab7"/><stop offset="1" stop-color="#04244a"/></radialGradient>
+<radialGradient id="shade" cx="25%" cy="25%" r="85%"><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000b25" stop-opacity=".85"/></radialGradient>
+<clipPath id="sphere"><circle cx="60" cy="60" r="54"/></clipPath>
+<filter id="halo"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+<circle cx="60" cy="60" r="55" fill="none" stroke="#77d7ff" stroke-width="3" opacity=".65" filter="url(#halo)"/>
+<g clip-path="url(#sphere)">
+<circle cx="60" cy="60" r="54" fill="url(#ocean)"/>
+<g fill="#73a95b" stroke="#b5c18b" stroke-width=".6">
+<path d="M-2 26L17 14 31 13 40 21 48 19 52 27 47 34 43 34 41 41 35 43 36 49 29 47 25 39 19 40 17 35 10 36 6 30Z"/>
+<path d="M32 48L40 48 43 54 48 57 48 63 55 69 52 78 47 84 45 96 40 103 37 91 33 83 35 73 29 65 29 56Z"/>
+<path d="M45 8L55 9 60 16 55 23 48 25 44 18Z" fill="#d4ebde"/>
+<path d="M67 20L77 15 88 16 94 20 103 18 121 31 119 46 111 46 105 41 97 44 96 51 89 54 87 45 81 42 78 35 70 37 65 31Z"/>
+<path d="M70 37L79 36 88 43 86 53 93 61 88 73 82 79 78 76 76 66 71 60 67 48Z" fill="#abaf69"/>
+<path d="M92 77L103 73 113 80 111 91 102 93 94 88Z" fill="#b8a370"/>
+<path d="M0 108Q56 100 120 108L120 121H0Z" fill="#d7ecee"/>
+</g>
+<g fill="none" stroke="#fff" stroke-linecap="round" opacity=".65">
+<path d="M10 26Q27 17 38 28M57 24Q76 17 92 27M15 58Q27 49 41 56M55 75Q70 65 81 74M90 58Q108 52 115 62" stroke-width="3"/>
+<path d="M8 83Q25 78 34 83M58 44Q68 41 75 44M64 98Q84 88 98 99" stroke-width="2"/>
+</g>
+<circle cx="60" cy="60" r="54" fill="url(#shade)"/>
+</g><circle cx="60" cy="60" r="54" fill="none" stroke="#83ceff" stroke-width="1" opacity=".7"/>
+</svg>

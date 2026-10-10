@@ -181,3 +181,10 @@ html[data-lang="es"] .lang-es{display:initial!important}
 .solar-wind-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 @media(max-width:600px){.solar-visual{padding:20px}#space>p{padding:0 22px;margin:22px 0}.solar-visual h2{max-width:95%}}
 @media print{.solar-visual{aspect-ratio:auto;background:none;padding:12px 0}.solar-visual::after,.solar-wind-particles{display:none}#space .solar-visual h2{color:#111;text-shadow:none}#space>p{padding:0}}
+/* Reference solar-wind animation over a star and dust field */
+.solar-visual{aspect-ratio:600/359;background-color:#071122;background-image:radial-gradient(ellipse at 52% 35%,rgba(127,87,136,.3),transparent 46%),radial-gradient(ellipse at 68% 70%,rgba(44,108,148,.25),transparent 43%),radial-gradient(ellipse at 28% 42%,rgba(183,106,53,.15),transparent 42%),radial-gradient(1px 1px at 12% 17%,#dfebff 80%,transparent),radial-gradient(1px 1px at 63% 71%,#bcdcff 80%,transparent),radial-gradient(1px 1px at 78% 21%,#fff 80%,transparent),radial-gradient(1.5px 1.5px at 38% 52%,#c7d8ff 70%,transparent);background-size:100% 100%,100% 100%,100% 100%,97px 83px,131px 113px,173px 157px,251px 199px}
+.solar-flow-gif{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;z-index:0}
+.solar-earth{position:absolute;left:83%;top:56%;width:8%;height:auto;transform:translate(-50%,-50%);z-index:1;filter:drop-shadow(0 0 8px rgba(100,211,255,.45))}
+.solar-visual::after{inset:73% 0 0;z-index:2}
+#space .solar-visual h2{z-index:3;padding-right:15%}
+@media(prefers-reduced-motion:reduce){.solar-flow-gif{visibility:hidden}.solar-visual{background-color:#13253c}}
