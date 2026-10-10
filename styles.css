@@ -216,3 +216,12 @@ html[data-lang="es"] .lang-es{display:initial!important}
 #noneq .dipole-toolbar{top:14px;left:16px;right:16px;justify-content:flex-end}
 @media(max-width:700px){#noneq.dipole-split{grid-template-columns:1fr}#noneq .dipole-copy{padding:24px}#noneq .dipole-visual{height:320px;border-radius:0}}
 @media print{#noneq.dipole-split{display:block}#noneq .dipole-copy{padding:0}#noneq .dipole-visual{display:none}}
+/* Run-and-tumble animation on the left, research text on the right */
+#stochastic.stochastic-split{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0;overflow:hidden;background:white}
+.stochastic-copy{padding:30px}.stochastic-copy h2{margin:0 0 18px}.stochastic-copy p{margin:0}
+.stochastic-visual{position:relative;width:100%;height:360px;background:#f6f9f7;border-radius:0 18px 18px 0;overflow:hidden}
+.stochastic-visual canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.run-toolbar{position:absolute;top:14px;left:16px;right:16px;display:flex;justify-content:flex-end;gap:8px;z-index:1}
+.run-toolbar button{background:white;border:1px solid #cbdacf;border-radius:20px;padding:5px 12px;color:#263d31;font-size:.75rem;cursor:pointer}.run-toolbar button:focus-visible{outline:2px solid #37a15a;outline-offset:3px}
+@media(max-width:700px){#stochastic.stochastic-split{grid-template-columns:1fr}.stochastic-visual{height:320px;border-radius:0}.stochastic-copy{padding:24px}}
+@media print{#stochastic.stochastic-split{display:block}.stochastic-visual{display:none}.stochastic-copy{padding:0}}
