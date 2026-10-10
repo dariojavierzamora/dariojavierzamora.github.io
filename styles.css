@@ -171,13 +171,13 @@ html[data-lang="es"] .lang-es{display:initial!important}
 .cv-profile-links{display:flex;flex-wrap:wrap;gap:16px 26px}.cv-profile-links .profile-link{display:inline-flex;align-items:center;gap:9px}.cv-profile-links .profile-link[href*="conicet"] .profile-icon{width:34px;flex-basis:34px}
 
 .matrix-section{padding:10px 0 0}.matrix-disclosure{background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden}.matrix-disclosure summary{display:flex;align-items:center;justify-content:space-between;gap:20px;list-style:none;cursor:pointer;padding:22px 26px;font-weight:700;color:var(--brand)}.matrix-disclosure summary::-webkit-details-marker{display:none}.matrix-disclosure summary:focus-visible{outline:3px solid var(--brand);outline-offset:-4px}.matrix-chevron{font-size:24px}.matrix-disclosure[open] .matrix-chevron{transform:rotate(45deg)}.matrix-content{padding:0 26px 26px}.matrix-scroll{overflow-x:auto}.research-matrix{width:100%;border-collapse:collapse;min-width:590px}.research-matrix caption{text-align:left;font-size:1.25rem;font-weight:700;color:#142139;padding:14px 0 20px}.research-matrix th,.research-matrix td{padding:13px 16px;border-bottom:1px solid var(--line);text-align:left}.research-matrix thead th{background:#f1f6f8;font-size:.9rem}.research-matrix tbody th{font-weight:600;font-size:.9rem;width:35%}.research-matrix td{width:21.66%}.matrix-dots{display:flex;flex-wrap:wrap;gap:5px}.matrix-dot{display:grid;place-items:center;width:30px;height:32px;border:1px solid transparent;border-radius:8px;background:transparent;font-size:24px;line-height:1;cursor:pointer}.matrix-dot.method-0{color:#214ddf}.matrix-dot.method-1{color:#7c3aed}.matrix-dot.method-2{color:#0c9b91}.matrix-dot:hover,.matrix-dot[aria-pressed=true]{background:#edf2fb;border-color:currentColor}.matrix-dot:focus-visible{outline:2px solid currentColor;outline-offset:2px}.matrix-empty{color:#b0baca}.matrix-detail{margin-top:22px;padding:22px;background:#f4f7f8;border-radius:14px}.matrix-detail h3{margin:8px 0;font-size:1.15rem}.matrix-detail p{margin:8px 0}.matrix-detail .eyebrow{font-size:.72rem}@media(max-width:600px){.matrix-content{padding:0 16px 16px}.matrix-disclosure summary{padding:20px 16px}.research-matrix th,.research-matrix td{padding:12px 10px}}
-/* Animated solar-wind research background */
-#space{position:relative;isolation:isolate;overflow:hidden;background:#091d2b;color:#f5f9ff;border-color:#284c62;padding:36px}
-#space::before{content:"";position:absolute;inset:-3%;z-index:-2;background:url('solar-wind-background.png') center/cover no-repeat;animation:solar-background-drift 24s ease-in-out infinite alternate}
-#space::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,15,27,.83),rgba(5,15,27,.76) 55%,rgba(5,15,27,.72))}
-#space h2,#space p{position:relative;color:#f5f9ff;text-shadow:0 1px 3px #06111f}
-#space .chip{background:rgba(7,25,40,.8);color:#a8f1ff;border:1px solid rgba(151,225,255,.4)}
-.solar-wind-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
-@keyframes solar-background-drift{from{transform:scale(1) translateX(-.5%);filter:brightness(.95)}to{transform:scale(1.045) translateX(.5%);filter:brightness(1.14)}}
-@media(max-width:600px){#space{padding:24px}#space::before{background-position:58% center}}
-@media print{#space{background:white;color:#111}#space::before,#space::after,.solar-wind-particles{display:none}#space h2,#space p{color:#111;text-shadow:none}}
+/* Solar eruption illustration above the research description */
+#space{padding:0;overflow:hidden;background:white}
+.solar-visual{position:relative;isolation:isolate;aspect-ratio:3/2;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;background:#091d2b url('solar-wind-background.png') center/100% 100% no-repeat}
+.solar-visual::after{content:"";position:absolute;inset:50% 0 0;z-index:1;background:linear-gradient(transparent,rgba(3,13,24,.9))}
+#space .solar-visual h2{position:relative;z-index:2;color:white;text-shadow:0 2px 8px #041321;margin:0;font-size:clamp(1.4rem,3vw,2rem)}
+#space .solar-visual .chip{display:none}
+#space>p{padding:0 32px;margin:26px 0 32px;color:var(--text)}
+.solar-wind-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+@media(max-width:600px){.solar-visual{padding:20px}#space>p{padding:0 22px;margin:22px 0}.solar-visual h2{max-width:95%}}
+@media print{.solar-visual{aspect-ratio:auto;background:none;padding:12px 0}.solar-visual::after,.solar-wind-particles{display:none}#space .solar-visual h2{color:#111;text-shadow:none}#space>p{padding:0}}
