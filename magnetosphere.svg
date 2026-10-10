@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 359" preserveAspectRatio="none">
+<defs><linearGradient id="field"><stop stop-color="#47ccff" stop-opacity=".85"/><stop offset="1" stop-color="#44bcff" stop-opacity=".15"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="2"/></filter></defs>
+<g fill="none" stroke="url(#field)" stroke-width="1.5">
+<path d="M600 75C477 70 410 119 407 200C410 275 487 324 600 323" stroke-width="2"/>
+<path d="M600 113C510 100 450 132 448 199C450 262 516 292 600 284"/>
+<path d="M600 151C529 137 478 153 476 199C478 243 534 261 600 246"/>
+<path d="M600 178C547 167 492 171 492 200C492 228 549 230 600 218"/>
+</g>
+<path d="M600 75C477 70 410 119 407 200C410 275 487 324 600 323" fill="none" stroke="#4bd8ff" stroke-opacity=".35" stroke-width="5" filter="url(#glow)"/>
+</svg>
