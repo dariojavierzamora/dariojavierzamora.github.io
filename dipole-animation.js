@@ -2,7 +2,7 @@
   const panel=document.querySelector('.dipole-visual'), data=window.DIPOLE_FRAMES;
   if(!panel||!data)return;
   const canvas=panel.querySelector('canvas'),ctx=canvas.getContext('2d');
-  const status=panel.querySelector('.dipole-status'),pause=panel.querySelector('.dipole-pause'),restart=panel.querySelector('.dipole-restart');
+  const pause=panel.querySelector('.dipole-pause'),restart=panel.querySelector('.dipole-restart');
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   let width=0,height=0,frame=0,last=0,elapsed=0,visible=false,playing=!reduced.matches;
   const language=()=>document.documentElement.dataset.lang||'en';
@@ -12,8 +12,8 @@
     const position=Math.max(0,(elapsed-2)/.4),index=Math.min(Math.floor(position),data.frames.length-1);
     const next=Math.min(index+1,data.frames.length-1),fraction=index===next?0:position-index;
     const current=data.frames[index],future=data.frames[next];
-    const size=Math.min(width*.8,height-160),spacing=size/data.width;
-    const left=(width-size)/2,top=62;
+    const size=Math.min(width*.82,height-80),spacing=size/data.width;
+    const left=(width-size)/2,top=50+(height-65-size)/2;
     ctx.lineCap='round';ctx.lineJoin='round';
     for(let i=0;i<current.angles.length;i++){
       const a=current.angles[i],delta=Math.atan2(Math.sin(future.angles[i]-a),Math.cos(future.angles[i]-a));
@@ -26,7 +26,6 @@
       const phi=Math.atan2(dy,dx),head=spacing*.19;
       ctx.beginPath();ctx.moveTo(x+dx-head*Math.cos(phi-.5),y+dy-head*Math.sin(phi-.5));ctx.lineTo(x+dx,y+dy);ctx.lineTo(x+dx-head*Math.cos(phi+.5),y+dy-head*Math.sin(phi+.5));ctx.stroke();
     }
-    status.textContent=`15 × 15 · T = 0.01 · ${language()==='es'?'Paso':'Step'} ${current.step.toLocaleString(language()==='es'?'es-AR':'en-US')}`;
   };
   const resize=()=>{width=panel.clientWidth;height=panel.clientHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);render();};
   const draw=time=>{
