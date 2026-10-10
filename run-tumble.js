@@ -41,7 +41,7 @@
     ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
   };
   const resize=()=>{width=panel.clientWidth;height=panel.clientHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);render();};
-  const draw=time=>{frame=0;if(!visible||document.hidden||!playing){last=0;return;}const dt=last?Math.min((time-last)/1000,.05):0;last=time;advance(dt);render();frame=requestAnimationFrame(draw);};
+  const draw=time=>{frame=0;if(!visible||document.hidden||!playing){last=0;return;}const dt=last?Math.min((time-last)/1000,.05):0;last=time;advance(dt*2);render();frame=requestAnimationFrame(draw);};
   const sync=()=>{if(frame)cancelAnimationFrame(frame);frame=0;last=0;labels();render();if(visible&&!document.hidden&&playing)frame=requestAnimationFrame(draw);};
   pause.addEventListener('click',()=>{playing=!playing;sync();});restart.addEventListener('click',()=>{reset();sync();});
   reset();new ResizeObserver(resize).observe(panel);new IntersectionObserver(e=>{visible=e[0].isIntersecting;sync();}).observe(panel);
