@@ -140,3 +140,32 @@
   }
   updateLanguage();
 })();
+
+// Submit directly without navigating to the email endpoint.
+(() => {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const feedback = document.getElementById('contact-feedback');
+  const button = form.querySelector('button[type="submit"]');
+  let sending = false;
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (sending || !form.reportValidity()) return;
+    if (form.elements['_honey'].value) return;
+    const es = document.documentElement.dataset.lang === 'es';
+    sending = true; button.disabled = true; feedback.hidden = false;
+    feedback.textContent = es ? 'Enviando mensaje…' : 'Sending message…';
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/djzamora@conicet.gov.ar', {
+        method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      const result = await response.json();
+      if (!response.ok || !(result.success === true || result.success === 'true')) throw new Error('Submission failed');
+      feedback.textContent = es ? 'Mensaje enviado. ¡Gracias por contactarme!' : 'Message sent. Thank you for getting in touch!';
+      form.reset();
+    } catch (error) {
+      feedback.textContent = es ? 'No se pudo enviar el mensaje. Intentá nuevamente o escribime a djzamora@conicet.gov.ar.' : 'Your message could not be sent. Please try again or email djzamora@conicet.gov.ar.';
+    } finally { sending = false; button.disabled = false; }
+  });
+})();
