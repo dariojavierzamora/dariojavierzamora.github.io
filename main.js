@@ -19,7 +19,7 @@
   document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
   const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
   document.getElementById('print-cv')?.addEventListener('click',()=>window.print());
-  document.getElementById('contact-form')?.addEventListener('submit',ev=>{ev.preventDefault();const name=document.getElementById('name').value.trim(),email=document.getElementById('email').value.trim(),message=document.getElementById('message').value.trim();location.href=`mailto:djzamora@conicet.gov.ar?subject=${encodeURIComponent('Website contact from '+name)}&body=${encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+message)}`;});
+  if(new URLSearchParams(location.search).get('sent')==='1'){const notice=document.getElementById('contact-success');if(notice)notice.hidden=false;}
 
   const search=document.getElementById('pub-search'), yearSelect=document.getElementById('pub-year'), typeSelect=document.getElementById('pub-type');
   if(search&&D){
