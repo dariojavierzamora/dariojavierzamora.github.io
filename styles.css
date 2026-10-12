@@ -248,3 +248,4 @@ html[data-lang="es"] .lang-es{display:initial!important}
 html[data-lang="es"] .feature-card p.lang-es{display:block!important}
 .feature-card p{overflow-wrap:anywhere;min-width:0}
 @media(max-width:600px){.cosmic-visual{min-width:0}.cosmic-visual h2{max-width:100%;overflow-wrap:anywhere}}
+.cosmic-visual{width:100%;max-width:100%}
