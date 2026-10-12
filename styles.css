@@ -242,3 +242,9 @@ html[data-lang="es"] .lang-es{display:initial!important}
 @keyframes galaxy-natural-spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
 @media(max-width:600px){.galaxy-natural{width:95%;top:40%}}
 @media(prefers-reduced-motion:reduce){.galaxy-natural{animation:none}}
+
+/* Keep research artwork and translated paragraphs inside their panels. */
+.cosmic-visual{overflow:hidden}
+html[data-lang="es"] .feature-card p.lang-es{display:block!important}
+.feature-card p{overflow-wrap:anywhere;min-width:0}
+@media(max-width:600px){.cosmic-visual{min-width:0}.cosmic-visual h2{max-width:100%;overflow-wrap:anywhere}}
