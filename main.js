@@ -156,7 +156,7 @@
     sending = true; button.disabled = true; feedback.hidden = false;
     feedback.textContent = es ? 'Enviando mensaje…' : 'Sending message…';
     try {
-      const response = await fetch('https://formsubmit.co/ajax/djzamora@conicet.gov.ar', {
+      const response = await fetch('https://formsubmit.co/ajax/javierzamora055@gmail.com', {
         method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         body: JSON.stringify(Object.fromEntries(new FormData(form)))
       });
