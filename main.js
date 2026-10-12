@@ -19,7 +19,6 @@
   document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
   const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
   document.getElementById('print-cv')?.addEventListener('click',()=>window.print());
-  if(new URLSearchParams(location.search).get('sent')==='1'){const notice=document.getElementById('contact-success');if(notice)notice.hidden=false;}
 
   const search=document.getElementById('pub-search'), yearSelect=document.getElementById('pub-year'), typeSelect=document.getElementById('pub-type');
   if(search&&D){
@@ -141,31 +140,3 @@
   updateLanguage();
 })();
 
-// Submit directly without navigating to the email endpoint.
-(() => {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
-  const feedback = document.getElementById('contact-feedback');
-  const button = form.querySelector('button[type="submit"]');
-  let sending = false;
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
-    if (sending || !form.reportValidity()) return;
-    if (form.elements['_honey'].value) return;
-    const es = document.documentElement.dataset.lang === 'es';
-    sending = true; button.disabled = true; feedback.hidden = false;
-    feedback.textContent = es ? 'Enviando mensaje…' : 'Sending message…';
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/javierzamora055@gmail.com', {
-        method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        body: JSON.stringify(Object.fromEntries(new FormData(form)))
-      });
-      const result = await response.json();
-      if (!response.ok || !(result.success === true || result.success === 'true')) throw new Error('Submission failed');
-      feedback.textContent = es ? 'Mensaje enviado. ¡Gracias por contactarme!' : 'Message sent. Thank you for getting in touch!';
-      form.reset();
-    } catch (error) {
-      feedback.textContent = es ? 'No se pudo enviar el mensaje. Intentá nuevamente o escribime a djzamora@conicet.gov.ar.' : 'Your message could not be sent. Please try again or email djzamora@conicet.gov.ar.';
-    } finally { sending = false; button.disabled = false; }
-  });
-})();
