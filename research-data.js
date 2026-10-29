@@ -1,5 +1,5 @@
 window.RESEARCH_DATA = {
-  "updated": "2026-10-07",
+  "updated": "2026-10-29",
   "papers": [
     {
       "id": 1,
@@ -18,14 +18,14 @@ window.RESEARCH_DATA = {
     {
       "id": 2,
       "year": 2026,
-      "type": "preprint",
+      "type": "article",
       "title": "Tracking nonlinear solar-wind dynamics over three solar cycles using Wind observations",
       "authors": [
         "D.J. Zamora",
         "F. Abaca"
       ],
-      "venue": "arXiv:2608.17037",
-      "url": "https://arxiv.org/abs/2608.17037"
+      "venue": "Physica Scripta (2026)",
+      "url": "https://doi.org/10.1088/1402-4896/aebafc"
     },
     {
       "id": 3,
